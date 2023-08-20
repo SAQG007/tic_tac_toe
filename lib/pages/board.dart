@@ -16,7 +16,7 @@ class _BoardState extends State<Board> {
         children: [
           Text(
             "Your Turn (X)",
-            style: Theme.of(context).textTheme.titleLarge,
+            style: Theme.of(context).textTheme.displaySmall,
           ),
           Center(
             child: GridView.count(
