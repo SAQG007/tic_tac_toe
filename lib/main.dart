@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tic_tac_toe/pages/board.dart';
 import 'package:tic_tac_toe/theme/theme.dart';
 
 void main() {
   runApp(const MyApp());
+  
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp
+  ]);
 }
 
 class MyApp extends StatelessWidget {
