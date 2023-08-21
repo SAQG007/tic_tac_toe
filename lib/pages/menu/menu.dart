@@ -22,25 +22,25 @@ class _MenuState extends State<Menu> {
   }
 
   // setting music switch value in shared preferences
-  void _setMusicValue() async {
+  void _setMusicStatus() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isMusicOn', _isMusicOn!);
   }
 
   // setting sound switch value in shared preferences
-  void _setSoundValue() async {
+  void _setSoundStatus() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isSoundOn', _isSoundOn!);
   }
 
   // getting music switch value from shared preferences
-  void _getMusicValue() async {
+  void _getMusicStatus() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     _isMusicOn = prefs.getBool('isMusicOn') ?? true;
   }
 
   // getting sound switch value from shared preferences
-  void _getSoundValue() async {
+  void _getSoundStatus() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     _isSoundOn = prefs.getBool('isSoundOn') ?? true;
   }
@@ -48,8 +48,8 @@ class _MenuState extends State<Menu> {
   @override
   void initState() {
     super.initState();
-    _getMusicValue();
-    _getSoundValue();
+    _getMusicStatus();
+    _getSoundStatus();
   }
 
   void _showSettingsDialog() {
@@ -75,7 +75,7 @@ class _MenuState extends State<Menu> {
                       setState(() {
                         _isMusicOn = value;
                       });
-                      _setMusicValue();
+                      _setMusicStatus();
                     },
                   ),
                   const SizedBox(
@@ -88,7 +88,7 @@ class _MenuState extends State<Menu> {
                       setState(() {
                         _isSoundOn = value;
                       });
-                      _setSoundValue();
+                      _setSoundStatus();
                     },
                   ),
                 ],
