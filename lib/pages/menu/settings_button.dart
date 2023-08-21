@@ -30,7 +30,6 @@ class _SettingsButtonState extends State<SettingsButton> {
           onChanged: (bool value) {
             setState(() {
               widget.switchValue = value;
-              print(widget.switchValue);
             });
           }
         ),
