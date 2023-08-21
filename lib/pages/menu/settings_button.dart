@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class SettingsButton extends StatefulWidget {
   final String title;
-  bool switchValue;
+  final bool switchValue;
+  // callback function that will return a bool and will be called whenever the value of switch changes
+  final Function(bool) onChangedCallBack; 
 
-  SettingsButton({
+  const SettingsButton({
     required this.title,
     required this.switchValue,
+    required this.onChangedCallBack,
     Key? key
   }) : super(key: key);
 
@@ -29,7 +31,7 @@ class _SettingsButtonState extends State<SettingsButton> {
           value: widget.switchValue,
           onChanged: (bool value) {
             setState(() {
-              widget.switchValue = value;
+              widget.onChangedCallBack(value);
             });
           }
         ),
