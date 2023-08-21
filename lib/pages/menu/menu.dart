@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:tic_tac_toe/pages/board.dart';
 import 'package:tic_tac_toe/pages/menu/menu_button.dart';
+import 'package:tic_tac_toe/pages/menu/settings_button.dart';
 
 class Menu extends StatefulWidget {
   const Menu({ Key? key }) : super(key: key);
@@ -12,8 +13,8 @@ class Menu extends StatefulWidget {
 
 class _MenuState extends State<Menu> {
 
-  bool _musicSwitchValue = true;
-  bool _tapSoundValue = true;
+  final bool _musicSwitchValue = true;
+  final bool _soundSwitchValue = true;
 
   void _navigateToBoard() {
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Board()));
@@ -35,43 +36,11 @@ class _MenuState extends State<Menu> {
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Music",
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
-                      Switch(
-                        value: _musicSwitchValue,
-                        onChanged: (bool value) {
-                          setState(() {
-                            _musicSwitchValue = value;
-                          });
-                        }
-                      ),
-                    ],
-                  ),
+                  SettingsButton(title: "Music", switchValue: _musicSwitchValue),
                   const SizedBox(
                     height: 20.0,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Sound",
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
-                      Switch(
-                        value: _tapSoundValue,
-                        onChanged: (bool value) {
-                          setState(() {
-                            _tapSoundValue = value;
-                          });
-                        }
-                      ),
-                    ],
-                  ),
+                  SettingsButton(title: "Sound", switchValue: _soundSwitchValue),
                 ],
               );
             }
