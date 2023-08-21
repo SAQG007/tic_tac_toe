@@ -36,13 +36,13 @@ class _MenuState extends State<Menu> {
   // getting music switch value from shared preferences
   void _getMusicValue() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    _musicSwitchValue = await prefs.getBool('isMusicOn');
+    _musicSwitchValue = prefs.getBool('isMusicOn') ?? true;
   }
 
   // getting sound switch value from shared preferences
   void _getSoundValue() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    _soundSwitchValue = await prefs.getBool('isSoundOn');
+    _soundSwitchValue = prefs.getBool('isSoundOn') ?? true;
   }
 
   @override
