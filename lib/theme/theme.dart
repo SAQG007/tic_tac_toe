@@ -19,10 +19,31 @@ ThemeData myTheme = ThemeData(
     onError: Color(0xffFFFFFF),
   ),
   textTheme: const TextTheme(
-    headlineLarge: TextStyle(
+    displayLarge: TextStyle(
+      fontFamily: fontFamily,
+    ),
+    displayMedium: TextStyle(
       fontFamily: fontFamily,
     ),
     displaySmall: TextStyle(
+      fontFamily: fontFamily,
+    ),
+    headlineSmall: TextStyle(
+      fontFamily: fontFamily,
+    ),
+    headlineMedium: TextStyle(
+      fontFamily: fontFamily,
+    ),
+    headlineLarge: TextStyle(
+      fontFamily: fontFamily,
+    ),
+    labelLarge: TextStyle(
+      fontFamily: fontFamily,
+    ),
+    labelMedium: TextStyle(
+      fontFamily: fontFamily,
+    ),
+    labelSmall: TextStyle(
       fontFamily: fontFamily,
     ),
   ),
