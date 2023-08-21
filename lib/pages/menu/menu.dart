@@ -1,3 +1,4 @@
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,6 +26,7 @@ class _MenuState extends State<Menu> {
   void _setMusicStatus() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isMusicOn', _isMusicOn!);
+    _playMusic();
   }
 
   // setting sound switch value in shared preferences
@@ -37,12 +39,17 @@ class _MenuState extends State<Menu> {
   void _getMusicStatus() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     _isMusicOn = prefs.getBool('isMusicOn') ?? true;
+    _playMusic();
   }
 
   // getting sound switch value from shared preferences
   void _getSoundStatus() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     _isSoundOn = prefs.getBool('isSoundOn') ?? true;
+  }
+
+  Future<void> _playMusic() async {
+    _isMusicOn! ? FlameAudio.bgm.play('background.mp3') : FlameAudio.bgm.pause();
   }
 
   @override
