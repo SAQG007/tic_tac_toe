@@ -14,8 +14,8 @@ class Menu extends StatefulWidget {
 
 class _MenuState extends State<Menu> {
 
-  bool? _musicSwitchValue;
-  bool? _soundSwitchValue;
+  bool? _isMusicOn;
+  bool? _isSoundOn;
 
   void _navigateToBoard() {
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Board()));
@@ -24,25 +24,25 @@ class _MenuState extends State<Menu> {
   // setting music switch value in shared preferences
   void _setMusicValue() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('isMusicOn', _musicSwitchValue!);
+    await prefs.setBool('isMusicOn', _isMusicOn!);
   }
 
   // setting sound switch value in shared preferences
   void _setSoundValue() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('isSoundOn', _soundSwitchValue!);
+    await prefs.setBool('isSoundOn', _isSoundOn!);
   }
 
   // getting music switch value from shared preferences
   void _getMusicValue() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    _musicSwitchValue = prefs.getBool('isMusicOn') ?? true;
+    _isMusicOn = prefs.getBool('isMusicOn') ?? true;
   }
 
   // getting sound switch value from shared preferences
   void _getSoundValue() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    _soundSwitchValue = prefs.getBool('isSoundOn') ?? true;
+    _isSoundOn = prefs.getBool('isSoundOn') ?? true;
   }
 
   @override
@@ -70,10 +70,10 @@ class _MenuState extends State<Menu> {
                 children: [
                   SettingsButton(
                     title: "Music",
-                    switchValue: _musicSwitchValue!,
+                    switchValue: _isMusicOn!,
                     onChangedCallBack: (value) {
                       setState(() {
-                        _musicSwitchValue = value;
+                        _isMusicOn = value;
                       });
                       _setMusicValue();
                     },
@@ -83,10 +83,10 @@ class _MenuState extends State<Menu> {
                   ),
                   SettingsButton(
                     title: "Sound",
-                    switchValue: _soundSwitchValue!,
+                    switchValue: _isSoundOn!,
                     onChangedCallBack: (value) {
                       setState(() {
-                        _soundSwitchValue = value;
+                        _isSoundOn = value;
                       });
                       _setSoundValue();
                     },
