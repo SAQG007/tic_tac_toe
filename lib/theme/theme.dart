@@ -48,6 +48,7 @@ ThemeData myTheme = ThemeData(
       textStyle: const MaterialStatePropertyAll(TextStyle(
         fontFamily: fontFamily,
         fontSize: 25,
+        fontWeight: FontWeight.bold
       )),
     ),
   ),
