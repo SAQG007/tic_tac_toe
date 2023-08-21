@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tic_tac_toe/pages/board.dart';
+import 'package:tic_tac_toe/pages/menu/menu.dart';
 import 'package:tic_tac_toe/theme/theme.dart';
 
 void main() {
@@ -17,10 +17,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Tic Tac Toe',
       theme: myTheme,
       debugShowCheckedModeBanner: false,
-      home: const Board(),
+      home: const Menu(),
     );
   }
 }
