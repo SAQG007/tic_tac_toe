@@ -26,7 +26,7 @@ class _MenuState extends State<Menu> {
   void _setMusicStatus() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isMusicOn', _isMusicOn!);
-    _playMusic();
+    _playBackgroundMusic();
   }
 
   // setting sound switch value in shared preferences
@@ -39,7 +39,7 @@ class _MenuState extends State<Menu> {
   void _getMusicStatus() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     _isMusicOn = prefs.getBool('isMusicOn') ?? true;
-    _playMusic();
+    _playBackgroundMusic();
   }
 
   // getting sound switch value from shared preferences
@@ -48,7 +48,7 @@ class _MenuState extends State<Menu> {
     _isSoundOn = prefs.getBool('isSoundOn') ?? true;
   }
 
-  Future<void> _playMusic() async {
+  void _playBackgroundMusic() {
     _isMusicOn! ? FlameAudio.bgm.play('background.mp3') : FlameAudio.bgm.pause();
   }
 
