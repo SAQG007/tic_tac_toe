@@ -19,6 +19,7 @@ class _MenuState extends State<Menu> {
   bool? _isSoundOn;
 
   void _navigateToBoard() {
+    _playButtonTapSound();
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Board()));
   }
 
@@ -50,6 +51,10 @@ class _MenuState extends State<Menu> {
 
   void _playBackgroundMusic() {
     _isMusicOn! ? FlameAudio.bgm.play('background.mp3') : FlameAudio.bgm.pause();
+  }
+
+  void _playButtonTapSound() async {
+    await FlameAudio.play('button.mp3');
   }
 
   @override
