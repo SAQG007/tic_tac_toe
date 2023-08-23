@@ -16,12 +16,15 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
+
   final String _mailAddress = "syedabdulqadirgillani807@gmail.com";
+
+  final Uri _linkedInUrl = Uri.parse("https://www.linkedin.com/in/syed-abdul-qadir-gillani/");
+  final Uri _gitHubUrl = Uri.parse("https://github.com/SAQG007");
 
   void _navigateToChoose() {
     playButtonTapSound();
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const Choose()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const Choose()));
   }
 
   Future<void> _openMail() async {
@@ -44,7 +47,24 @@ class _MenuState extends State<Menu> {
       launchUrl(emailLauchUri);
     }
     else {
-      showDialog(
+      _showErrorDialog("Error while opening mail.");
+    }
+  }
+
+  Future<void> _openLinkedInProfile() async {
+    if(!await launchUrl(_linkedInUrl, mode: LaunchMode.externalApplication)) {
+      _showErrorDialog("Error while opening LinkedIn.");
+    }
+  }
+
+  Future<void> _openGitHubProfile() async {
+    if(!await launchUrl(_gitHubUrl, mode: LaunchMode.externalApplication)) {
+      _showErrorDialog("Error while opening GitHub.");
+    }
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
@@ -53,12 +73,13 @@ class _MenuState extends State<Menu> {
               style: Theme.of(context).textTheme.displaySmall,
             ),
             content: Text(
-              "Error while opening mail.",
+              message,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
+                  playButtonTapSound();
                   Navigator.of(context).pop();
                 },
                 child: const Text('OK'),
@@ -67,12 +88,6 @@ class _MenuState extends State<Menu> {
           );
         },
       );
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 
   void _showSettingsDialog() {
@@ -150,15 +165,44 @@ class _MenuState extends State<Menu> {
                 height: 20.0,
               ),
               Text(
-                "Send you feedback at:-",
+                "Send your feedback at:-",
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               GestureDetector(
-                onTap: _openMail,
+                onTap: () {
+                  playButtonTapSound();
+                  _openMail();
+                },
                 child: Text(
                   _mailAddress,
                   style: Theme.of(context).textTheme.labelLarge,
                 ),
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              Text(
+                "Connect with me at:-",
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      playButtonTapSound();
+                      _openLinkedInProfile();
+                    },
+                    child: Image.asset('assets/icons/linkedin.png'),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      playButtonTapSound();
+                      _openGitHubProfile();
+                    },
+                    child: Image.asset('assets/icons/github.png'),
+                  ),
+                ],
               ),
             ],
           ),
