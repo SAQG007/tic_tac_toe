@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tic_tac_toe/pages/menu/menu.dart';
+import 'package:tic_tac_toe/pages/menu.dart';
 import 'package:tic_tac_toe/theme/theme.dart';
 
 void main() {
