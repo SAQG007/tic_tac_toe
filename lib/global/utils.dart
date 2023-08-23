@@ -35,5 +35,5 @@ void playBackgroundMusic() {
 }
 
 void playButtonTapSound() async {
-  await FlameAudio.play('button.mp3');
+  isSoundOn! ? await FlameAudio.play('button.mp3') : null;
 }

@@ -15,7 +15,7 @@ class Menu extends StatefulWidget {
 class _MenuState extends State<Menu> {
 
   void _navigateToChoose() {
-    isSoundOn! ? playButtonTapSound() : null;
+    playButtonTapSound();
     Navigator.push(context, MaterialPageRoute(builder: (context) => const Choose()));
   }
 
