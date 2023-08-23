@@ -37,8 +37,19 @@ ThemeData myTheme = ThemeData(
     headlineLarge: TextStyle(
       fontFamily: fontFamily,
     ),
+    bodyLarge: TextStyle(
+      fontFamily: fontFamily,
+    ),
+    bodyMedium: TextStyle(
+      fontFamily: fontFamily,
+    ),
+    bodySmall: TextStyle(
+      fontFamily: fontFamily,
+    ),
     labelLarge: TextStyle(
       fontFamily: fontFamily,
+      fontSize: 16,
+      color: Colors.blue,
     ),
     labelMedium: TextStyle(
       fontFamily: fontFamily,
