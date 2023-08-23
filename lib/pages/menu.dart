@@ -120,9 +120,11 @@ class _MenuState extends State<Menu> {
                   ),
                 ],
               );
-            }),
-          );
-        });
+            }
+          ),
+        );
+      }
+    );
   }
 
   void _showAboutDialog() {
