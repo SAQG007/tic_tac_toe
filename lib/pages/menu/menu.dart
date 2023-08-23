@@ -19,7 +19,7 @@ class _MenuState extends State<Menu> {
   bool? _isSoundOn;
 
   void _navigateToBoard() {
-    _playButtonTapSound();
+    _isSoundOn! ? _playButtonTapSound() : null;
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Board()));
   }
 
