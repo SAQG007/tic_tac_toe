@@ -46,6 +46,7 @@ class _MenuState extends State<Menu> {
                     title: "Music",
                     switchValue: isMusicOn!,
                     onChangedCallBack: (value) {
+                      playButtonTapSound();
                       setState(() {
                         isMusicOn = value;
                       });
@@ -59,6 +60,7 @@ class _MenuState extends State<Menu> {
                     title: "Sound",
                     switchValue: isSoundOn!,
                     onChangedCallBack: (value) {
+                      playButtonTapSound();
                       setState(() {
                         isSoundOn = value;
                       });
