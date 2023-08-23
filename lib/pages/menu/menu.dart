@@ -126,7 +126,7 @@ class _MenuState extends State<Menu> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              MenuButton(title: "New Game", onTap: _navigateToBoard),
+              MenuButton(title: "New Game", onTap: _navigateToBoard,),
               MenuButton(title: "Settings", onTap: _showSettingsDialog,),
               MenuButton(title: "About", onTap: () {},),
             ],
