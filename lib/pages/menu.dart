@@ -25,6 +25,8 @@ class _MenuState extends State<Menu> {
   }
 
   void _showSettingsDialog() {
+    playButtonTapSound();
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -88,7 +90,7 @@ class _MenuState extends State<Menu> {
             children: [
               MenuButton(title: "New Game", onTap: _navigateToChoose,),
               MenuButton(title: "Settings", onTap: _showSettingsDialog,),
-              MenuButton(title: "About", onTap: () {},),
+              const MenuButton(title: "About", onTap: playButtonTapSound,),
             ],
           ),
         ],
