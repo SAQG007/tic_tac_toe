@@ -12,7 +12,10 @@ void main() {
     DeviceOrientation.portraitUp
   ]);
 
+  /* when the app is terminated or sent to background,
+  this instance will automatically pause or resume the background music */
   FlameAudio.bgm.initialize();
+
   getMusicStatus();
   getSoundStatus();
 }
