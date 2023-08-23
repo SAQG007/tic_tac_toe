@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tic_tac_toe/global/utils.dart';
 import 'package:tic_tac_toe/pages/menu.dart';
 import 'package:tic_tac_toe/theme/theme.dart';
 
@@ -9,6 +10,9 @@ void main() {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp
   ]);
+
+  getMusicStatus();
+  getSoundStatus();
 }
 
 class MyApp extends StatelessWidget {
