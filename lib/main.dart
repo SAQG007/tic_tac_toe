@@ -8,6 +8,7 @@ import 'package:tic_tac_toe/theme/theme.dart';
 void main() {
   runApp(const MyApp());
   
+  // fix the orientation to portrait up
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp
   ]);
