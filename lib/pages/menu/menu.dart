@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tic_tac_toe/pages/board.dart';
-import 'package:tic_tac_toe/pages/menu/menu_button.dart';
-import 'package:tic_tac_toe/pages/menu/settings_button.dart';
+import 'package:tic_tac_toe/widgets/menu_button.dart';
+import 'package:tic_tac_toe/widgets/settings_button.dart';
 
 class Menu extends StatefulWidget {
   const Menu({ Key? key }) : super(key: key);
