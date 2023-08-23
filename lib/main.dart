@@ -1,3 +1,4 @@
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tic_tac_toe/global/utils.dart';
@@ -11,6 +12,7 @@ void main() {
     DeviceOrientation.portraitUp
   ]);
 
+  FlameAudio.bgm.initialize();
   getMusicStatus();
   getSoundStatus();
 }
