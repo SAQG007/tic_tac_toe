@@ -35,6 +35,7 @@ class _BoardState extends State<Board> {
   void _resetBoard() {
     setState(() {
       gridSymbols = List.filled(9, "");
+      currentPlayer = widget.symbol;
     });
     _filledIndexCount = 0;
   }
