@@ -39,6 +39,7 @@ dependencies:
   shared_preferences: ^2.2.0
   flame_audio: ^2.0.5
   url_launcher: ^6.1.12
+  achievement_view: ^1.0.1
 
 dev_dependencies:
   flutter_test:

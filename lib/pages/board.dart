@@ -1,3 +1,4 @@
+import 'package:achievement_view/achievement_view.dart';
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/global/utils.dart';
 
@@ -130,6 +131,22 @@ class _BoardState extends State<Board> {
     _winner = "";
   }
 
+  void _showAchievementView(BuildContext context){
+    AchievementView(
+      content: Text(
+        "The winner is $_winner",
+        style: Theme.of(context).textTheme.titleLarge,
+      ),
+      color: Colors.amber[400]!,
+      isCircle: true,
+      icon: const Icon(
+        Icons.emoji_events_outlined,
+        size: 30,
+      ),
+      duration: const Duration(seconds: 5),
+    ).show(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -152,6 +169,7 @@ class _BoardState extends State<Board> {
                       playButtonTapSound();
                       _changeGridSymbol(index);
                       _filledIndexCount > 4 ? _findWinner() : null;
+                      _winner.isNotEmpty ? _showAchievementView(context) : null;
                       _changeCurrentPlayer();
                     }
                   },

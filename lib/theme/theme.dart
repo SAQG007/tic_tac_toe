@@ -38,6 +38,17 @@ ThemeData myTheme = ThemeData(
     headlineLarge: TextStyle(
       fontFamily: fontFamily,
     ),
+    titleLarge: TextStyle(
+      fontFamily: fontFamily,
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+    ),
+    titleMedium: TextStyle(
+      fontFamily: fontFamily,
+    ),
+    titleSmall: TextStyle(
+      fontFamily: fontFamily,
+    ),
     bodyLarge: TextStyle(
       fontFamily: fontFamily,
     ),
