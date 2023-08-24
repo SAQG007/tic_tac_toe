@@ -13,9 +13,9 @@ class Choose extends StatefulWidget {
 
 class _ChooseState extends State<Choose> {
 
-  void _navigateToBoard() {
+  void _navigateToBoard(String symbol) async {
     playButtonTapSound();
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Board()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Board(symbol: symbol,)));
   }
 
   @override
@@ -32,8 +32,12 @@ class _ChooseState extends State<Choose> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              MenuButton(title: "Play as X", onTap: _navigateToBoard,),
-              MenuButton(title: "Play as O", onTap: _navigateToBoard,),
+              MenuButton(title: "Play as X", onTap: () {
+                _navigateToBoard("X");
+              },),
+              MenuButton(title: "Play as O", onTap: () {
+                _navigateToBoard("O");
+              },),
             ],
           ),
         ],

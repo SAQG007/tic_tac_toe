@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 
 class Board extends StatefulWidget {
-  const Board({Key? key}) : super(key: key);
+  final String symbol;
+
+  const Board({
+    required this.symbol,
+    Key? key
+  }) : super(key: key);
 
   @override
   _BoardState createState() => _BoardState();
 }
 
 class _BoardState extends State<Board> {
+  @override
+  void initState() {
+    super.initState();
+    print("The symbol is: ${widget.symbol}");
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
