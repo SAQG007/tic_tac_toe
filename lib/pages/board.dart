@@ -64,10 +64,11 @@ class _BoardState extends State<Board> {
               children: List.generate(9, (index) {
                 return GestureDetector(
                   onTap: () {
-                    playButtonTapSound();
-                    _changeGridSymbol(index);
-                    _changeCurrentPlayer();
-                    print("Filled index count: $_filledIndexCount");
+                    if(gridSymbols[index].isEmpty) {
+                      playButtonTapSound();
+                      _changeGridSymbol(index);
+                      _changeCurrentPlayer();
+                    }
                   },
                   child: Container(
                     margin: const EdgeInsets.all(6.0),
