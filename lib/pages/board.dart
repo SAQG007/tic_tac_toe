@@ -15,6 +15,8 @@ class _BoardState extends State<Board> {
   List<String> gridSymbols = List.filled(9, "");
   int _filledIndexCount = 0;
   String _winner = "";
+  int _xWinCount = 0;
+  int _oWinCount = 0;
 
   void _changeGridSymbol(int index) {
     setState(() {
@@ -111,6 +113,12 @@ class _BoardState extends State<Board> {
     }
   }
 
+  void _incrementWinCount() {
+    setState(() {
+      _winner == "X" ? _xWinCount++ : _oWinCount++;
+    });
+  }
+
   void _showWinBar(BuildContext context){
     AchievementView(
       content: Text(
@@ -157,8 +165,17 @@ class _BoardState extends State<Board> {
                     if(gridSymbols[index].isEmpty && _winner.isEmpty) {
                       playButtonTapSound();
                       _changeGridSymbol(index);
+
+                      // this will only run if 5 or more indexes are filled
                       _filledIndexCount > 4 ? _findWinner() : null;
-                      _winner.isNotEmpty ? _showWinBar(context) : null;
+
+                      // this will only run if there is a winner
+                      _winner.isNotEmpty ? 
+                      {
+                        _showWinBar(context),
+                        _incrementWinCount()
+                      } : null;
+
                       _changeCurrentPlayer();
                     }
                   },
@@ -187,6 +204,29 @@ class _BoardState extends State<Board> {
                 );
               }),
             ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Text(
+            "Win Streak",
+            style: Theme.of(context).textTheme.displaySmall,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "X - $_xWinCount",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              const SizedBox(
+                width: 55,
+              ),
+              Text(
+                "O - $_oWinCount",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+            ],
           ),
         ],
       ),
