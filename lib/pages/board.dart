@@ -18,6 +18,13 @@ class _BoardState extends State<Board> {
   String currentPlayer = "";
   List<String> gridSymbols = List.filled(9, "");
   int _filledIndexCount = 0;
+  String _winner = "";
+
+  @override
+  void initState() {
+    super.initState();
+    currentPlayer = widget.symbol;
+  }
 
   void _changeGridSymbol(int index) {
     setState(() {
@@ -32,18 +39,95 @@ class _BoardState extends State<Board> {
     });
   }
 
+  void _findWinner() {
+    if(
+      gridSymbols[0].isNotEmpty &&
+      (gridSymbols[0] == gridSymbols[1]) &&
+      (gridSymbols[1] == gridSymbols[2]) &&
+      (gridSymbols[0] == gridSymbols[2])
+    ) {
+      _winner = gridSymbols[0];
+      return;
+    }
+
+    if(
+      gridSymbols[3].isNotEmpty &&
+      (gridSymbols[3] == gridSymbols[4]) &&
+      (gridSymbols[4] == gridSymbols[5]) &&
+      (gridSymbols[3] == gridSymbols[5])
+    ) {
+      _winner = gridSymbols[3];
+      return;
+    }
+
+    if(
+      gridSymbols[6].isNotEmpty &&
+      (gridSymbols[6] == gridSymbols[7]) &&
+      (gridSymbols[7] == gridSymbols[8]) &&
+      (gridSymbols[6] == gridSymbols[8])
+    ) {
+      _winner = gridSymbols[6];
+      return;
+    }
+
+    if(
+      gridSymbols[0].isNotEmpty &&
+      (gridSymbols[0] == gridSymbols[3]) &&
+      (gridSymbols[3] == gridSymbols[6]) &&
+      (gridSymbols[0] == gridSymbols[6])
+    ) {
+      _winner = gridSymbols[0];
+      return;
+    }
+
+    if(
+      gridSymbols[1].isNotEmpty &&
+      (gridSymbols[1] == gridSymbols[4]) &&
+      (gridSymbols[4] == gridSymbols[7]) &&
+      (gridSymbols[1] == gridSymbols[7])
+    ) {
+      _winner = gridSymbols[1];
+      return;
+    }
+
+    if(
+      gridSymbols[2].isNotEmpty &&      
+      (gridSymbols[2] == gridSymbols[5]) &&
+      (gridSymbols[5] == gridSymbols[8]) &&
+      (gridSymbols[2] == gridSymbols[8])
+    ) {
+      _winner = gridSymbols[2];
+      return;
+    }
+
+    if(
+      gridSymbols[0].isNotEmpty &&
+      (gridSymbols[0] == gridSymbols[4]) &&
+      (gridSymbols[4] == gridSymbols[8]) &&
+      (gridSymbols[0] == gridSymbols[8])
+    ) {
+      _winner = gridSymbols[0];
+      return;
+    }
+
+    if(
+      gridSymbols[2].isNotEmpty &&
+      (gridSymbols[2] == gridSymbols[4]) &&
+      (gridSymbols[4] == gridSymbols[6]) &&
+      (gridSymbols[2] == gridSymbols[6])
+    ) {
+      _winner = gridSymbols[2];
+      return;
+    }
+  }
+
   void _resetBoard() {
     setState(() {
       gridSymbols = List.filled(9, "");
       currentPlayer = widget.symbol;
     });
     _filledIndexCount = 0;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    currentPlayer = widget.symbol;
+    _winner = "";
   }
 
   @override
@@ -64,9 +148,10 @@ class _BoardState extends State<Board> {
               children: List.generate(9, (index) {
                 return GestureDetector(
                   onTap: () {
-                    if(gridSymbols[index].isEmpty) {
+                    if(gridSymbols[index].isEmpty && _winner.isEmpty) {
                       playButtonTapSound();
                       _changeGridSymbol(index);
+                      _filledIndexCount > 4 ? _findWinner() : null;
                       _changeCurrentPlayer();
                     }
                   },
