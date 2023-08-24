@@ -29,6 +29,8 @@ class _SettingsButtonState extends State<SettingsButton> {
         ),
         Switch(
           value: widget.switchValue,
+          inactiveThumbColor: Colors.deepPurple,
+          trackOutlineColor: const MaterialStatePropertyAll<Color>(Colors.deepPurple),
           onChanged: (bool value) {
             setState(() {
               widget.onChangedCallBack(value);

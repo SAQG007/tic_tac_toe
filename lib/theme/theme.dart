@@ -85,4 +85,17 @@ ThemeData myTheme = ThemeData(
       )),
     ),
   ),
+  dialogTheme: const DialogTheme(
+    backgroundColor: Color(0xffFFFBFE),
+    titleTextStyle: TextStyle(
+      color: Color(0xff1C1B1F),
+      fontFamily: fontFamily,
+      fontSize: 30,
+    ),
+    contentTextStyle: TextStyle(
+      color: Color(0xff1C1B1F),
+      fontFamily: fontFamily,
+      fontSize: 17,
+    ),
+  ),
 );

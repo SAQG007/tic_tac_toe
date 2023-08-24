@@ -68,13 +68,11 @@ class _MenuState extends State<Menu> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text(
+            title: const Text(
               "Error",
-              style: Theme.of(context).textTheme.displaySmall,
             ),
             content: Text(
               message,
-              style: Theme.of(context).textTheme.bodyLarge,
             ),
             actions: <Widget>[
               TextButton(
@@ -97,10 +95,9 @@ class _MenuState extends State<Menu> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Center(
+            title: const Center(
               child: Text(
                 "Settings",
-                style: Theme.of(context).textTheme.displaySmall,
               ),
             ),
             content: StatefulBuilder(
@@ -149,24 +146,21 @@ class _MenuState extends State<Menu> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(
+          title: const Text(
             "About",
-            style: Theme.of(context).textTheme.displaySmall,
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 "Experience classic gameplay with a modern twist in our Tic Tac Toe app – the ultimate battle of X's and O's on your device!",
-                style: Theme.of(context).textTheme.bodyLarge,
               ),
               const SizedBox(
                 height: 20.0,
               ),
-              Text(
+              const Text(
                 "Send your feedback at:-",
-                style: Theme.of(context).textTheme.bodyLarge,
               ),
               GestureDetector(
                 onTap: () {
@@ -175,15 +169,16 @@ class _MenuState extends State<Menu> {
                 },
                 child: Text(
                   _mailAddress,
-                  style: Theme.of(context).textTheme.labelLarge,
+                  style: const TextStyle(
+                    color: Colors.blue,
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 20.0,
               ),
-              Text(
+              const Text(
                 "Connect with me at:-",
-                style: Theme.of(context).textTheme.bodyLarge,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -212,9 +207,8 @@ class _MenuState extends State<Menu> {
                 playButtonTapSound();
                 Navigator.of(context).pop();
               },
-              child: Text(
+              child: const Text(
                 "OK",
-                style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
           ],
