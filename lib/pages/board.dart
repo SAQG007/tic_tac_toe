@@ -131,7 +131,6 @@ class _BoardState extends State<Board> {
         Icons.emoji_events_outlined,
         size: 30,
       ),
-      duration: const Duration(seconds: 5),
     ).show(context);
   }
 
