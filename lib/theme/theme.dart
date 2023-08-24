@@ -11,8 +11,8 @@ ThemeData myTheme = ThemeData(
     onPrimary: Color(0xffFFFFFF),
     secondary: Color(0xff625B71),
     onSecondary: Color(0xffFFFFFF),
-    background: Color(0xffFFFBFE),
-    onBackground: Color(0xff1C1B1F),
+    background: Color(0xff1C1B1F),
+    onBackground: Color(0xffFFFBFE),
     surface: Color(0xffFFFBFE),
     onSurface: Color(0xff1C1B1F),
     error: Color(0xffB3261E),
@@ -27,6 +27,7 @@ ThemeData myTheme = ThemeData(
     ),
     displaySmall: TextStyle(
       fontFamily: fontFamily,
+      color: Colors.white,
     ),
     headlineSmall: TextStyle(
       fontFamily: fontFamily,
