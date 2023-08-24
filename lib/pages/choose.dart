@@ -15,7 +15,7 @@ class _ChooseState extends State<Choose> {
 
   void _navigateToBoard(String symbol) async {
     playButtonTapSound();
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Board(symbol: symbol,)));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Board()));
   }
 
   @override

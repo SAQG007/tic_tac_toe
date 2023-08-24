@@ -3,12 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/global/utils.dart';
 
 class Board extends StatefulWidget {
-  final String symbol;
-
-  const Board({
-    required this.symbol,
-    Key? key
-  }) : super(key: key);
+  const Board({Key? key}) : super(key: key);
 
   @override
   _BoardState createState() => _BoardState();
@@ -16,27 +11,21 @@ class Board extends StatefulWidget {
 
 class _BoardState extends State<Board> {
 
-  String currentPlayer = "";
+  String _currentPlayer = "X";
   List<String> gridSymbols = List.filled(9, "");
   int _filledIndexCount = 0;
   String _winner = "";
 
-  @override
-  void initState() {
-    super.initState();
-    currentPlayer = widget.symbol;
-  }
-
   void _changeGridSymbol(int index) {
     setState(() {
-      gridSymbols[index] = currentPlayer;
+      gridSymbols[index] = _currentPlayer;
     });
     _filledIndexCount++;
   }
 
   void _changeCurrentPlayer() {
     setState(() {
-      currentPlayer == "X" ? currentPlayer = "O" : currentPlayer = "X";
+      _currentPlayer == "X" ? _currentPlayer = "O" : _currentPlayer = "X";
     });
   }
 
@@ -122,16 +111,7 @@ class _BoardState extends State<Board> {
     }
   }
 
-  void _resetBoard() {
-    setState(() {
-      gridSymbols = List.filled(9, "");
-      currentPlayer = widget.symbol;
-    });
-    _filledIndexCount = 0;
-    _winner = "";
-  }
-
-  void _showAchievementView(BuildContext context){
+  void _showWinBar(BuildContext context){
     AchievementView(
       content: Text(
         "The winner is $_winner",
@@ -147,6 +127,15 @@ class _BoardState extends State<Board> {
     ).show(context);
   }
 
+  void _resetBoard() {
+    setState(() {
+      gridSymbols = List.filled(9, "");
+      _currentPlayer = "X";
+    });
+    _filledIndexCount = 0;
+    _winner = "";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,7 +143,7 @@ class _BoardState extends State<Board> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Your Turn ($currentPlayer)",
+            "Your Turn ($_currentPlayer)",
             style: Theme.of(context).textTheme.displaySmall,
           ),
           Center(
@@ -169,7 +158,7 @@ class _BoardState extends State<Board> {
                       playButtonTapSound();
                       _changeGridSymbol(index);
                       _filledIndexCount > 4 ? _findWinner() : null;
-                      _winner.isNotEmpty ? _showAchievementView(context) : null;
+                      _winner.isNotEmpty ? _showWinBar(context) : null;
                       _changeCurrentPlayer();
                     }
                   },

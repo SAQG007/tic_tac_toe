@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:tic_tac_toe/global/utils.dart';
-import 'package:tic_tac_toe/pages/choose.dart';
+import 'package:tic_tac_toe/pages/board.dart';
 import 'package:tic_tac_toe/widgets/menu_button.dart';
 import 'package:tic_tac_toe/widgets/settings_button.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -22,9 +22,9 @@ class _MenuState extends State<Menu> {
   final Uri _linkedInUrl = Uri.parse("https://www.linkedin.com/in/syed-abdul-qadir-gillani/");
   final Uri _gitHubUrl = Uri.parse("https://github.com/SAQG007");
 
-  void _navigateToChoose() {
+  void _navigateToBoard() {
     playButtonTapSound();
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const Choose()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Board()));
   }
 
   Future<void> _openMail() async {
@@ -233,7 +233,7 @@ class _MenuState extends State<Menu> {
             children: [
               MenuButton(
                 title: "New Game",
-                onTap: _navigateToChoose,
+                onTap: _navigateToBoard,
               ),
               MenuButton(
                 title: "Settings",
