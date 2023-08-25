@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:tic_tac_toe/global/utils.dart';
@@ -231,6 +232,22 @@ class _MenuState extends State<Menu> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              AnimatedTextKit(
+                animatedTexts: [
+                  TyperAnimatedText(
+                    "Tic Tac Toe",
+                    textStyle: Theme.of(context).textTheme.displaySmall,
+                  ),
+                  WavyAnimatedText(
+                    "Tic Tac Toe",
+                    textStyle: Theme.of(context).textTheme.displaySmall,
+                  ),
+                ],
+                repeatForever: true,
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
               MenuButton(
                 title: "New Game",
                 onTap: _navigateToBoard,

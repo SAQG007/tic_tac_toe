@@ -40,6 +40,7 @@ dependencies:
   flame_audio: ^2.0.5
   url_launcher: ^6.1.12
   achievement_view: ^1.0.1
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:
