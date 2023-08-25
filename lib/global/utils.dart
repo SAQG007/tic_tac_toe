@@ -1,8 +1,15 @@
 import 'package:flame_audio/flame_audio.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 bool? isMusicOn;
 bool? isSoundOn;
+String appName = "";
+
+void getAppName() async {
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  appName = packageInfo.appName;
+}
 
 // setting music switch value in shared preferences
 void setMusicStatus() async {

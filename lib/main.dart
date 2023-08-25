@@ -19,6 +19,7 @@ void main() {
 
   getMusicStatus();
   getSoundStatus();
+  getAppName();
 }
 
 class MyApp extends StatelessWidget {

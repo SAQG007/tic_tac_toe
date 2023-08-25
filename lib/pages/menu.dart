@@ -235,11 +235,11 @@ class _MenuState extends State<Menu> {
               AnimatedTextKit(
                 animatedTexts: [
                   TyperAnimatedText(
-                    "Tic Tac Toe",
+                    appName,
                     textStyle: Theme.of(context).textTheme.displaySmall,
                   ),
                   WavyAnimatedText(
-                    "Tic Tac Toe",
+                    appName,
                     textStyle: Theme.of(context).textTheme.displaySmall,
                   ),
                 ],
