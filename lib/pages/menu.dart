@@ -5,7 +5,7 @@ import 'package:rive/rive.dart';
 import 'package:tic_tac_toe/global/utils.dart';
 import 'package:tic_tac_toe/pages/board.dart';
 import 'package:tic_tac_toe/widgets/menu_button.dart';
-import 'package:tic_tac_toe/widgets/settings_button.dart';
+import 'package:tic_tac_toe/widgets/settings_switch.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Menu extends StatefulWidget {
@@ -105,7 +105,7 @@ class _MenuState extends State<Menu> {
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SettingsButton(
+                  SettingsSwitch(
                     title: "Music",
                     switchValue: isMusicOn!,
                     onChangedCallBack: (value) {
@@ -119,7 +119,7 @@ class _MenuState extends State<Menu> {
                   const SizedBox(
                     height: 20.0,
                   ),
-                  SettingsButton(
+                  SettingsSwitch(
                     title: "Sound",
                     switchValue: isSoundOn!,
                     onChangedCallBack: (value) {

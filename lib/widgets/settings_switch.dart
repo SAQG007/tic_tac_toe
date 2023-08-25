@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class SettingsButton extends StatefulWidget {
+class SettingsSwitch extends StatefulWidget {
   final String title;
   final bool switchValue;
   // callback function that will return a bool and will be called whenever the value of switch changes
   final Function(bool) onChangedCallBack; 
 
-  const SettingsButton({
+  const SettingsSwitch({
     required this.title,
     required this.switchValue,
     required this.onChangedCallBack,
@@ -14,10 +14,10 @@ class SettingsButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _SettingsButtonState createState() => _SettingsButtonState();
+  _SettingsSwitchState createState() => _SettingsSwitchState();
 }
 
-class _SettingsButtonState extends State<SettingsButton> {
+class _SettingsSwitchState extends State<SettingsSwitch> {
   @override
   Widget build(BuildContext context) {
     return Row(
