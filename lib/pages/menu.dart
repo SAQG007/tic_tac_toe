@@ -25,7 +25,7 @@ class _MenuState extends State<Menu> {
 
   void _navigateToBoard() {
     playButtonTapSound();
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Board()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const Board()));
   }
 
   Future<void> _openMail() async {
