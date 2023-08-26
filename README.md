@@ -1,6 +1,6 @@
 # Tic Tac Toe
 
-Tic Tac Toe is a classic game brought to life with a modern twist by using the power of Flutter.
+A classic game brought to life with a modern twist by using the power of Flutter.
 
 ## Key Features
 - Sleek Design
