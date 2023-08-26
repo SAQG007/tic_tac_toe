@@ -111,6 +111,10 @@ class _BoardState extends State<Board> {
       _winner = gridSymbols[2];
       return;
     }
+
+    if(_filledIndexCount == 9) {
+      _showDrawBar(context);
+    }
   }
 
   void _incrementWinCount() {
@@ -130,6 +134,34 @@ class _BoardState extends State<Board> {
       icon: const Icon(
         Icons.emoji_events_outlined,
         size: 30,
+      ),
+    ).show(context);
+  }
+
+  void _showDrawBar(BuildContext context){
+    AchievementView(
+      content: Text(
+        "Match Draw",
+        style: Theme.of(context).textTheme.titleLarge,
+      ),
+      color: Colors.amber[400]!,
+      isCircle: true,
+      icon: const Stack(
+        alignment: AlignmentDirectional.center,
+        children: [
+          Icon(
+            Icons.emoji_events_outlined,
+            size: 25,
+            color: Colors.black,
+          ),
+          Icon(
+            Icons.block_outlined,
+            color: Colors.red,
+            size: 40,
+            weight: 0.1,
+            grade: 0.1,
+          ),
+        ],
       ),
     ).show(context);
   }
