@@ -29,7 +29,7 @@ A classic game brought to life with a modern twist by using the power of Flutter
     ### OR
 
     To try out the app, you can download and install the APK file from the following link:
-    [Download APK](https://drive.google.com/file/d/12pLqC7Yl6-wcAdpBZl5ooK1jriVC8oL1/view?usp=sharing)
+    [Download APK](https://drive.google.com/file/d/1F5I415sAdCH15wEOyu8hQ1T3s1i08Kzm/view?usp=sharing)
     
     Make sure to enable installation from unknown sources on your device before installing the APK.
     
