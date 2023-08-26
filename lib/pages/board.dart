@@ -19,6 +19,17 @@ class _BoardState extends State<Board> {
   int _xWinCount = 0;
   int _oWinCount = 0;
 
+  final List<List<int>> _winningCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
   void _changeGridSymbol(int index) {
     setState(() {
       gridSymbols[index] = _currentPlayer;
@@ -33,84 +44,19 @@ class _BoardState extends State<Board> {
   }
 
   void _findWinner() {
-    if(
-      gridSymbols[0].isNotEmpty &&
-      (gridSymbols[0] == gridSymbols[1]) &&
-      (gridSymbols[1] == gridSymbols[2]) &&
-      (gridSymbols[0] == gridSymbols[2])
-    ) {
-      _winner = gridSymbols[0];
-      return;
-    }
+    for(final combination in _winningCombinations) {
+      
+      final symbol = gridSymbols[combination[0]];
 
-    if(
-      gridSymbols[3].isNotEmpty &&
-      (gridSymbols[3] == gridSymbols[4]) &&
-      (gridSymbols[4] == gridSymbols[5]) &&
-      (gridSymbols[3] == gridSymbols[5])
-    ) {
-      _winner = gridSymbols[3];
-      return;
-    }
-
-    if(
-      gridSymbols[6].isNotEmpty &&
-      (gridSymbols[6] == gridSymbols[7]) &&
-      (gridSymbols[7] == gridSymbols[8]) &&
-      (gridSymbols[6] == gridSymbols[8])
-    ) {
-      _winner = gridSymbols[6];
-      return;
-    }
-
-    if(
-      gridSymbols[0].isNotEmpty &&
-      (gridSymbols[0] == gridSymbols[3]) &&
-      (gridSymbols[3] == gridSymbols[6]) &&
-      (gridSymbols[0] == gridSymbols[6])
-    ) {
-      _winner = gridSymbols[0];
-      return;
-    }
-
-    if(
-      gridSymbols[1].isNotEmpty &&
-      (gridSymbols[1] == gridSymbols[4]) &&
-      (gridSymbols[4] == gridSymbols[7]) &&
-      (gridSymbols[1] == gridSymbols[7])
-    ) {
-      _winner = gridSymbols[1];
-      return;
-    }
-
-    if(
-      gridSymbols[2].isNotEmpty &&      
-      (gridSymbols[2] == gridSymbols[5]) &&
-      (gridSymbols[5] == gridSymbols[8]) &&
-      (gridSymbols[2] == gridSymbols[8])
-    ) {
-      _winner = gridSymbols[2];
-      return;
-    }
-
-    if(
-      gridSymbols[0].isNotEmpty &&
-      (gridSymbols[0] == gridSymbols[4]) &&
-      (gridSymbols[4] == gridSymbols[8]) &&
-      (gridSymbols[0] == gridSymbols[8])
-    ) {
-      _winner = gridSymbols[0];
-      return;
-    }
-
-    if(
-      gridSymbols[2].isNotEmpty &&
-      (gridSymbols[2] == gridSymbols[4]) &&
-      (gridSymbols[4] == gridSymbols[6]) &&
-      (gridSymbols[2] == gridSymbols[6])
-    ) {
-      _winner = gridSymbols[2];
-      return;
+      if(
+        symbol.isNotEmpty &&
+        // The index is the value in the combination list.
+        // If combination is [3, 4, 5], the variable index will take on the values 3, 4, and 5 during the iteration.
+        combination.every((index) => gridSymbols[index] == symbol)
+      ) {
+        _winner = symbol;
+        return;
+      }
     }
 
     if(_filledIndexCount == 9) {
