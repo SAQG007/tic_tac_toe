@@ -224,7 +224,7 @@ class _MenuState extends State<Menu> {
       body: Stack(
         children: [
           const RiveAnimation.asset(
-            'assets/backgrounds/stars.riv',
+            'assets/backgrounds/planet-orbit.riv',
             fit: BoxFit.cover,
             alignment: Alignment.center,
             antialiasing: true,

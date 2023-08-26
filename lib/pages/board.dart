@@ -1,5 +1,6 @@
 import 'package:achievement_view/achievement_view.dart';
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
 import 'package:tic_tac_toe/global/utils.dart';
 
 class Board extends StatefulWidget {
@@ -129,7 +130,7 @@ class _BoardState extends State<Board> {
         "The winner is $_winner",
         style: Theme.of(context).textTheme.titleLarge,
       ),
-      color: Colors.amber[400]!,
+      color: const Color.fromARGB(255, 40, 35, 73),
       isCircle: true,
       icon: const Icon(
         Icons.emoji_events_outlined,
@@ -144,7 +145,7 @@ class _BoardState extends State<Board> {
         "Match Draw",
         style: Theme.of(context).textTheme.titleLarge,
       ),
-      color: Colors.amber[400]!,
+      color: const Color.fromARGB(255, 40, 35, 73),
       isCircle: true,
       icon: const Stack(
         alignment: AlignmentDirectional.center,
@@ -152,7 +153,7 @@ class _BoardState extends State<Board> {
           Icon(
             Icons.emoji_events_outlined,
             size: 25,
-            color: Colors.black,
+            color: Colors.white,
           ),
           Icon(
             Icons.block_outlined,
@@ -178,84 +179,94 @@ class _BoardState extends State<Board> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
-          Text(
-            "Your Turn ($_currentPlayer)",
-            style: Theme.of(context).textTheme.displaySmall,
+          const RiveAnimation.asset(
+            'assets/backgrounds/stars.riv',
+            fit: BoxFit.cover,
+            alignment: Alignment.center,
+            antialiasing: true,
           ),
-          Center(
-            child: GridView.count(
-              shrinkWrap: true,
-              padding: const EdgeInsets.fromLTRB(10.0, 35.0, 10.0, 10.0),
-              crossAxisCount: 3,
-              children: List.generate(9, (index) {
-                return GestureDetector(
-                  onTap: () {
-                    if(gridSymbols[index].isEmpty && _winner.isEmpty) {
-                      playButtonTapSound();
-                      _changeGridSymbol(index);
-
-                      // this will only run if 5 or more indexes are filled
-                      _filledIndexCount > 4 ? _findWinner() : null;
-
-                      // this will only run if there is a winner
-                      _winner.isNotEmpty ? 
-                      {
-                        _showWinBar(context),
-                        _incrementWinCount()
-                      } : null;
-
-                      _changeCurrentPlayer();
-                    }
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.all(6.0),
-                    decoration: const BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(20.0)
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.white60,
-                          blurRadius: 5.0,
-                          offset: Offset(2, 2),
-                        ),
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        gridSymbols[index],
-                        style: Theme.of(context).textTheme.headlineLarge,
-                      ),
-                    ),
-                  ),
-                );
-              }),
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Text(
-            "Win Streak",
-            style: Theme.of(context).textTheme.displaySmall,
-          ),
-          Row(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "X - $_xWinCount",
-                style: Theme.of(context).textTheme.titleLarge,
+                "Your Turn ($_currentPlayer)",
+                style: Theme.of(context).textTheme.displaySmall,
+              ),
+              Center(
+                child: GridView.count(
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.fromLTRB(10.0, 35.0, 10.0, 10.0),
+                  crossAxisCount: 3,
+                  children: List.generate(9, (index) {
+                    return GestureDetector(
+                      onTap: () {
+                        if(gridSymbols[index].isEmpty && _winner.isEmpty) {
+                          playButtonTapSound();
+                          _changeGridSymbol(index);
+
+                          // this will only run if 5 or more indexes are filled
+                          _filledIndexCount > 4 ? _findWinner() : null;
+
+                          // this will only run if there is a winner
+                          _winner.isNotEmpty ? 
+                          {
+                            _showWinBar(context),
+                            _incrementWinCount()
+                          } : null;
+
+                          _changeCurrentPlayer();
+                        }
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.all(6.0),
+                        decoration: const BoxDecoration(
+                          color: Color(0xff120f25),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20.0)
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.white24,
+                              blurRadius: 5.0,
+                              offset: Offset(2, 2),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            gridSymbols[index],
+                            style: Theme.of(context).textTheme.headlineLarge,
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+                ),
               ),
               const SizedBox(
-                width: 55,
+                height: 20,
               ),
               Text(
-                "O - $_oWinCount",
-                style: Theme.of(context).textTheme.titleLarge,
+                "Win Streak",
+                style: Theme.of(context).textTheme.displaySmall,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "X - $_xWinCount",
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const SizedBox(
+                    width: 55,
+                  ),
+                  Text(
+                    "O - $_oWinCount",
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ],
               ),
             ],
           ),

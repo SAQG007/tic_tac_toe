@@ -37,6 +37,7 @@ ThemeData myTheme = ThemeData(
     ),
     headlineLarge: TextStyle(
       fontFamily: fontFamily,
+      color: Colors.white70,
     ),
     titleLarge: TextStyle(
       fontFamily: fontFamily,
