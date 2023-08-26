@@ -1,16 +1,36 @@
-# tic_tac_toe
+# Tic Tac Toe
 
-A new Flutter project.
+Tic Tac Toe is a classic game brought to life with a modern twist by using the power of Flutter.
+
+## Key Features
+- Sleek Design
+- Responsive Gameplay
+- Background Music
+- Sound Effects
+- Win Streak Tracker
+- Achievements Bar
+- User Preferred Settings
+
+## Screenshots
+<img src="assets/screenshots/menu.png" alt="menu" width="300" />
+<img src="assets/screenshots/settings.png" alt="settings" width="300" />
+<img src="assets/screenshots/about.png" alt="about" width="300" />
+<img src="assets/screenshots/board.png" alt="board" width="300" />
+<img src="assets/screenshots/x-win.png" alt="x-win" width="300" />
+<img src="assets/screenshots/o-win.png" alt="o-win" width="300" />
+<img src="assets/screenshots/match-draw.png" alt="match-draw" width="300" />
 
 ## Getting Started
+1. Clone this repository.
+2. Make sure you have Flutter installed on your machine.
+3. Navigate to the project directory and run `flutter pub get` to install dependencies.
+4. Run the app using `flutter run`.
 
-This project is a starting point for a Flutter application.
+    ### OR
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    To try out the app, you can download and install the APK file from the following link:
+    [Download APK](https://drive.google.com/file/d/12pLqC7Yl6-wcAdpBZl5ooK1jriVC8oL1/view?usp=sharing)
+    
+    Make sure to enable installation from unknown sources on your device before installing the APK.
+    
+    Once the APK is installed, you can open the app and start enjoying.
